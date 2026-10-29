@@ -24,9 +24,15 @@ img.wm{height:22px;display:block;margin-bottom:14px}
 .meta{font-size:12px;color:#888780;margin-bottom:12px}
 .verdict{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;margin-bottom:14px}
 .dot{display:inline-block;border-radius:50%;vertical-align:middle;margin-left:6px;flex:none}
-.bar{height:5px;background:#4A4240;border-radius:3px;overflow:hidden;margin-bottom:4px}
-.bar i{display:block;height:100%;background:#75AA9C;border-radius:3px}
-.barlab{font-size:10px;color:#888780;letter-spacing:.4px;margin-bottom:18px}
+.bar{position:relative;height:10px;background:#4A4240;border-radius:5px;margin-bottom:7px}
+.bar i{position:absolute;left:0;top:0;height:100%;border-radius:5px}
+.bar .proj{background:#564D4A}
+.bar .tick{position:absolute;top:-3px;width:2px;height:16px;background:#F3F8F7;
+  border-radius:1px;transform:translateX(-1px)}
+.bar .tick::after{content:"";position:absolute;top:-4px;left:-2px;
+  width:6px;height:6px;border-radius:50%;background:#F3F8F7}
+.barlab{font-size:10px;color:#888780;letter-spacing:.3px;margin-bottom:18px}
+.barlab b{color:#F3F8F7;font-weight:600}
 .card{background:#3A3230;border-radius:14px;padding:12px 12px 6px;margin-bottom:14px}
 h2{font-size:10px;letter-spacing:1.6px;color:#75AA9C;text-transform:uppercase;
   margin:0 0 8px;font-weight:700}
@@ -52,8 +58,12 @@ footer{color:#888780;font-size:11px;text-align:center;margin:18px 0 70px}
 <div class="hero"><span class="m" data-net="R 33 398" data-incl="R 38 348">R 33 398</span></div>
 <div class="meta">20:42 · target <span class="m" data-net="R 29 489" data-incl="R 33 860">R 29 489</span> · projected <span class="m" data-net="R 34 093" data-incl="R 39 146">R 34 093</span></div>
 <div class="verdict"><span class="dot" style="background:#F2A900;width:14px;height:14px"></span> Ahead of target · <span class="m" data-net="R 4 604" data-incl="R 5 286">R 4 604</span> ahead</div>
-<div class="bar"><i style="width:98%"></i></div>
-<div class="barlab">98% of today's projected trade banked</div>
+<div class="bar">
+  <i class="proj" style="width:96.2%"></i>
+  <i class="fill" style="width:94.2%;background:#F2A900"></i>
+  <span class="tick" style="left:83.2%" title="target"></span>
+</div>
+<div class="barlab">banked <span class="m" data-net="R 33 398" data-incl="R 38 348">R 33 398</span> &nbsp;·&nbsp; <b>target <span class="m" data-net="R 29 489" data-incl="R 33 860">R 29 489</span></b> marked &nbsp;·&nbsp; closing <span class="m" data-net="R 34 093" data-incl="R 39 146">R 34 093</span> &nbsp;·&nbsp; 98% of the day's trade in</div>
 
 <div class="card"><h2>Today</h2><table>
 <tr><th>Line</th><th>Actual</th><th>By now</th><th>Forecast</th><th>Target</th></tr>
