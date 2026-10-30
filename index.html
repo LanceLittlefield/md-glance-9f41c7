@@ -15,7 +15,10 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:#2F2826;color:#F3F8F7;
   font:16px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;
-  padding:calc(env(safe-area-inset-top) + 22px) 14px max(24px,env(safe-area-inset-bottom));
+  /* The notch inset ends exactly where the status bar ends, so padding of
+     just the inset leaves the wordmark touching the clock. Always a gap on
+     top of it, whether or not the browser reports an inset at all. */
+  padding:calc(max(10px,env(safe-area-inset-top)) + 16px) 14px max(24px,env(safe-area-inset-bottom));
   -webkit-font-smoothing:antialiased}
 img.wm{height:20px;display:block;margin-bottom:18px;opacity:.95}
 .sub{font-size:10px;letter-spacing:1.6px;font-weight:700;color:#75AA9C;
@@ -42,11 +45,12 @@ th:first-child{text-align:left}
 td{text-align:right;padding:6px 0;white-space:nowrap;
   border-top:1px solid rgba(243,248,247,.07)}
 td+td,th+th{padding-left:6px}
-td.ln,th:first-child{text-align:left;width:3.6em}
+td.ln,th:first-child{text-align:left;width:56px}
 td.ln{color:#F3F8F7}
 td.dim{color:#888780}
 tr.roll td{font-style:italic;color:#888780}
-tr.tot td{font-weight:700;border-top:1px solid rgba(243,248,247,.22)}
+tr.roll td.ln{font-size:11px}
+tr.tot td{font-weight:600;letter-spacing:-.2px;border-top:1px solid rgba(243,248,247,.22)}
 td.cond{font-size:11px}
 .vat{position:fixed;right:14px;bottom:max(16px,env(safe-area-inset-bottom));
   background:#AE8344;color:#2F2826;border:0;border-radius:20px;padding:10px 16px;
@@ -68,86 +72,86 @@ footer{color:#888780;font-size:11px;text-align:center;margin:18px 0 70px}
 <tr><th>Line</th><th>Actual</th><th>By now</th><th>Forecast</th><th>Target</th></tr>
 <tr>
           <td class="ln">FHK</td>
-          <td><span class="m" data-net="R 15 111" data-incl="R 17 351">R 15 111</span></td>
-          <td class="dim"><span class="m" data-net="R 13 137" data-incl="R 15 084">R 13 137</span></td>
-          <td><span class="m" data-net="R 15 116" data-incl="R 17 356">R 15 116</span></td>
-          <td><span class="m" data-net="R 11 742" data-incl="R 13 482">R 11 742</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr>
+          <td><span class="m" data-net="15 111" data-incl="17 351">15 111</span></td>
+          <td class="dim"><span class="m" data-net="13 137" data-incl="15 084">13 137</span></td>
+          <td><span class="m" data-net="15 116" data-incl="17 356">15 116</span></td>
+          <td><span class="m" data-net="11 742" data-incl="13 482">11 742</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">JHK</td>
-          <td><span class="m" data-net="R 11 101" data-incl="R 12 746">R 11 101</span></td>
-          <td class="dim"><span class="m" data-net="R 10 655" data-incl="R 12 234">R 10 655</span></td>
-          <td><span class="m" data-net="R 11 101" data-incl="R 12 746">R 11 101</span></td>
-          <td><span class="m" data-net="R 9 831" data-incl="R 11 288">R 9 831</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr>
+          <td><span class="m" data-net="11 101" data-incl="12 746">11 101</span></td>
+          <td class="dim"><span class="m" data-net="10 655" data-incl="12 234">10 655</span></td>
+          <td><span class="m" data-net="11 101" data-incl="12 746">11 101</span></td>
+          <td><span class="m" data-net="9 831" data-incl="11 288">9 831</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">STB</td>
-          <td><span class="m" data-net="R 5 584" data-incl="R 6 412">R 5 584</span></td>
-          <td class="dim"><span class="m" data-net="R 8 321" data-incl="R 9 554">R 8 321</span></td>
-          <td><span class="m" data-net="R 5 584" data-incl="R 6 412">R 5 584</span></td>
-          <td><span class="m" data-net="R 9 854" data-incl="R 11 314">R 9 854</span><span class="dot" style="background:#D70040;width:10px;height:10px"></span></td></tr><tr>
+          <td><span class="m" data-net="5 584" data-incl="6 412">5 584</span></td>
+          <td class="dim"><span class="m" data-net="8 321" data-incl="9 554">8 321</span></td>
+          <td><span class="m" data-net="5 584" data-incl="6 412">5 584</span></td>
+          <td><span class="m" data-net="9 854" data-incl="11 314">9 854</span><span class="dot" style="background:#D70040;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">BAR</td>
-          <td><span class="m" data-net="R 4 232" data-incl="R 4 859">R 4 232</span></td>
-          <td class="dim"><span class="m" data-net="R 4 880" data-incl="R 5 603">R 4 880</span></td>
-          <td><span class="m" data-net="R 9 992" data-incl="R 11 473">R 9 992</span></td>
-          <td><span class="m" data-net="R 7 209" data-incl="R 8 277">R 7 209</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr class="roll">
+          <td><span class="m" data-net="4 232" data-incl="4 859">4 232</span></td>
+          <td class="dim"><span class="m" data-net="4 880" data-incl="5 603">4 880</span></td>
+          <td><span class="m" data-net="9 992" data-incl="11 473">9 992</span></td>
+          <td><span class="m" data-net="7 209" data-incl="8 277">7 209</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr class="roll">
           <td class="ln">STB+BAR</td>
-          <td><span class="m" data-net="R 9 816" data-incl="R 11 271">R 9 816</span></td>
-          <td class="dim"><span class="m" data-net="R 13 201" data-incl="R 15 158">R 13 201</span></td>
-          <td><span class="m" data-net="R 15 576" data-incl="R 17 885">R 15 576</span></td>
-          <td><span class="m" data-net="R 17 063" data-incl="R 19 592">R 17 063</span></td></tr><tr class="tot">
+          <td><span class="m" data-net="9 816" data-incl="11 271">9 816</span></td>
+          <td class="dim"><span class="m" data-net="13 201" data-incl="15 158">13 201</span></td>
+          <td><span class="m" data-net="15 576" data-incl="17 885">15 576</span></td>
+          <td><span class="m" data-net="17 063" data-incl="19 592">17 063</span></td></tr><tr class="tot">
           <td class="ln">Total</td>
-          <td><span class="m" data-net="R 36 028" data-incl="R 41 368">R 36 028</span></td>
-          <td class="dim"><span class="m" data-net="R 36 993" data-incl="R 42 476">R 36 993</span></td>
-          <td><span class="m" data-net="R 41 793" data-incl="R 47 987">R 41 793</span></td>
-          <td><span class="m" data-net="R 38 637" data-incl="R 44 363">R 38 637</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr></table></div>
+          <td><span class="m" data-net="36 028" data-incl="41 368">36 028</span></td>
+          <td class="dim"><span class="m" data-net="36 993" data-incl="42 476">36 993</span></td>
+          <td><span class="m" data-net="41 793" data-incl="47 987">41 793</span></td>
+          <td><span class="m" data-net="38 637" data-incl="44 363">38 637</span><span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr></table></div>
 
 <div class="card"><h2>October 2026</h2><table>
 <tr><th>Line</th><th>MTD</th><th>Close</th><th>Range</th><th>vs target</th></tr>
 <tr>
           <td class="ln">FHK</td>
           <td>-4%</td>
-          <td><span class="m" data-net="R 375 694" data-incl="R 431 376">R 375 694</span></td>
-          <td class="dim">±<span class="m" data-net="R 6 248" data-incl="R 7 174">R 6 248</span></td>
+          <td><span class="m" data-net="375 694" data-incl="431 376">375 694</span></td>
+          <td class="dim">±<span class="m" data-net="6 248" data-incl="7 174">6 248</span></td>
           <td>-3%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">JHK</td>
           <td>+4%</td>
-          <td><span class="m" data-net="R 306 744" data-incl="R 352 207">R 306 744</span></td>
-          <td class="dim">±<span class="m" data-net="R 9 994" data-incl="R 11 475">R 9 994</span></td>
+          <td><span class="m" data-net="306 744" data-incl="352 207">306 744</span></td>
+          <td class="dim">±<span class="m" data-net="9 994" data-incl="11 475">9 994</span></td>
           <td>+4%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">STB</td>
           <td>-15%</td>
-          <td><span class="m" data-net="R 282 914" data-incl="R 324 845">R 282 914</span></td>
-          <td class="dim">±<span class="m" data-net="R 7 530" data-incl="R 8 646">R 7 530</span></td>
+          <td><span class="m" data-net="282 914" data-incl="324 845">282 914</span></td>
+          <td class="dim">±<span class="m" data-net="7 530" data-incl="8 646">7 530</span></td>
           <td>-16%<span class="dot" style="background:#D70040;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">BAR</td>
           <td>+12%</td>
-          <td><span class="m" data-net="R 208 800" data-incl="R 239 746">R 208 800</span></td>
-          <td class="dim">±<span class="m" data-net="R 9 070" data-incl="R 10 414">R 9 070</span></td>
+          <td><span class="m" data-net="208 800" data-incl="239 746">208 800</span></td>
+          <td class="dim">±<span class="m" data-net="9 070" data-incl="10 414">9 070</span></td>
           <td>+14%<span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr class="tot">
           <td class="ln">Total</td>
           <td>-3%</td>
-          <td><span class="m" data-net="R 1 174 152" data-incl="R 1 348 174">R 1 174 152</span></td>
-          <td class="dim">±<span class="m" data-net="R 16 670" data-incl="R 19 141">R 16 670</span></td>
+          <td><span class="m" data-net="1 174 152" data-incl="1 348 174">1 174 152</span></td>
+          <td class="dim">±<span class="m" data-net="16 670" data-incl="19 141">16 670</span></td>
           <td>-2%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td></tr></table></div>
 
 <div class="card"><h2>Days</h2><table>
 <tr><th>Day</th><th>Total</th><th>vs target</th><th>Weather</th></tr>
 <tr class="">
           <td class="ln">Tue 27</td>
-          <td><span class="m" data-net="R 29 455" data-incl="R 33 821">R 29 455</span></td>
+          <td><span class="m" data-net="29 455" data-incl="33 821">29 455</span></td>
           <td>-0%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td>
           <td class="dim cond">pcloud 25°</td></tr><tr class="">
           <td class="ln">Wed 28</td>
-          <td><span class="m" data-net="R 27 942" data-incl="R 32 083">R 27 942</span></td>
+          <td><span class="m" data-net="27 942" data-incl="32 083">27 942</span></td>
           <td>-2%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td>
           <td class="dim cond">pcloud 27°</td></tr><tr class="">
           <td class="ln">Thu 29</td>
-          <td><span class="m" data-net="R 33 693" data-incl="R 38 687">R 33 693</span></td>
+          <td><span class="m" data-net="33 693" data-incl="38 687">33 693</span></td>
           <td>+14%<span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td>
           <td class="dim cond">clear 28°</td></tr><tr class="tot">
           <td class="ln">Fri 30</td>
-          <td><span class="m" data-net="R 41 793" data-incl="R 47 987">R 41 793</span></td>
+          <td><span class="m" data-net="41 793" data-incl="47 987">41 793</span></td>
           <td>+8%<span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td>
           <td class="dim cond">clear 28°</td></tr><tr class="">
           <td class="ln">Sat 31</td>
-          <td><span class="m" data-net="R 57 456" data-incl="R 65 972">R 57 456</span></td>
+          <td><span class="m" data-net="57 456" data-incl="65 972">57 456</span></td>
           <td>-3%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td>
           <td class="dim cond">overcast 24°</td></tr></table></div>
 
