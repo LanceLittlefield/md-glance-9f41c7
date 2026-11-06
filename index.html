@@ -182,15 +182,25 @@ var BUILT = 1793965560000;
 function age() {
   var mins = Math.round((Date.now() - BUILT) / 60000);
   var el = document.getElementById('stale');
-  if (mins < 25) {
+  // 45, not 25: the card computes, the publisher runs every 15 minutes and
+  // the page reloads every 15. Normal lag stacks up near half an hour, and a
+  // warning that cries wolf at 27 minutes is one you stop reading.
+  if (mins < 45) {
     el.className = 'stale'; document.body.classList.remove('stale-on'); return;
   }
   var how = mins < 90 ? mins + ' minutes ago'
           : mins < 2880 ? Math.round(mins / 60) + ' hours ago'
           : Math.round(mins / 1440) + ' days ago';
-  el.textContent = (mins > 180 ? 'Not updating. ' : 'Out of date. ')
-    + 'Last read the tills ' + how + ' — these are not today’s '
-    + 'live figures. The Mac that publishes this is asleep or offline.';
+  var at = new Date(BUILT).toLocaleTimeString('en-ZA',
+             {hour: '2-digit', minute: '2-digit', hour12: false});
+  // The page cannot tell "nothing new was published" from "this tab has not
+  // reloaded", so below three hours it names both and says what to try.
+  el.textContent = mins > 180
+    ? 'Not updating. Last read the tills at ' + at + ', ' + how
+      + '. The Mac that publishes this is asleep or offline.'
+    : 'Last read the tills at ' + at + ', ' + how
+      + '. Pull down to refresh — if that changes nothing, '
+      + 'the Mac that publishes this has stopped.';
   el.className = 'stale on' + (mins > 180 ? ' dead' : '');
   document.body.classList.add('stale-on');
 }
