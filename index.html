@@ -130,13 +130,13 @@ footer{color:#888780;font-size:11px;text-align:center;margin:18px 0 70px}
           <td>-10%<span class="dot" style="background:#D70040;width:10px;height:10px"></span></td></tr><tr>
           <td class="ln">BAR</td>
           <td>+15%</td>
-          <td><span class="m" data-net="251 551" data-incl="288 834">251 551</span></td>
+          <td><span class="m" data-net="251 548" data-incl="288 830">251 548</span></td>
           <td class="dim">±<span class="m" data-net="35 858" data-incl="41 173">35 858</span></td>
           <td>+18%<span class="dot" style="background:#75AA9C;width:10px;height:10px"></span></td></tr><tr class="tot">
           <td class="ln">Total</td>
           <td>+1%</td>
-          <td><span class="m" data-net="1 291 959" data-incl="1 483 442">1 291 959</span></td>
-          <td class="dim">±<span class="m" data-net="60 580" data-incl="69 559">60 580</span></td>
+          <td><span class="m" data-net="1 291 956" data-incl="1 483 438">1 291 956</span></td>
+          <td class="dim">±<span class="m" data-net="60 578" data-incl="69 556">60 578</span></td>
           <td>+4%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td></tr></table></div>
 
 <div class="card"><h2>Days</h2><table>
@@ -171,14 +171,14 @@ footer{color:#888780;font-size:11px;text-align:center;margin:18px 0 70px}
           <td>+0%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td>
           <td class="dim cond">clear 24°</td></tr></table></div>
 
-<footer>01:25 · rebuilt every 15 min</footer>
+<footer>01:42 · rebuilt every 15 min</footer>
 <button class="vat" id="t">Net</button>
 
 <script>
 // How old is what you are looking at? The page is rebuilt every 15 minutes
 // while the Mac that builds it is awake and online. When it is not, nothing
 // here changes and nothing would say so - hence this.
-var BUILT = 1794180300000;
+var BUILT = 1794181320000;
 function age() {
   var mins = Math.round((Date.now() - BUILT) / 60000);
   var el = document.getElementById('stale');
