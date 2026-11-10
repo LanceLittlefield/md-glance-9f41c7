@@ -171,14 +171,14 @@ footer{color:#888780;font-size:11px;text-align:center;margin:18px 0 70px}
           <td>+2%<span class="dot" style="background:#F2A900;width:10px;height:10px"></span></td>
           <td class="dim cond">clear 24°</td></tr></table></div>
 
-<footer>02:13 · rebuilt every 15 min</footer>
+<footer>02:30 · rebuilt every 15 min</footer>
 <button class="vat" id="t">Net</button>
 
 <script>
 // How old is what you are looking at? The page is rebuilt every 15 minutes
 // while the Mac that builds it is awake and online. When it is not, nothing
 // here changes and nothing would say so - hence this.
-var BUILT = 1794269580000;
+var BUILT = 1794270600000;
 function age() {
   var mins = Math.round((Date.now() - BUILT) / 60000);
   var el = document.getElementById('stale');
